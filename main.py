@@ -24,4 +24,19 @@ com.place(x=50,y=100, height=50, width=400)          #ttk=Tkinter themed widgets
 done_button = Button(win,text="Done",font=('Arial', 15,'bold'))
 done_button.place(x=220,y=180)
 
+w_label = Label(win, text="Weather Climate",font=('Arial', 10, 'bold'))  
+w_label.place(x=10,y=320, height=15, width=150)
+
+w_label = Label(win, text="Weather Description",font=('Arial', 10, 'bold'))  
+w_label.place(x=10,y=350, height=15, width=150)
+
+w_label = Label(win, text="Temperature",font=('Arial', 10, 'bold'))  
+w_label.place(x=10,y=380, height=15, width=150)
+
+
+w_label = Label(win, text="Pressure",font=('Arial', 10, 'bold'))  
+w_label.place(x=10,y=410, height=15, width=150)
+
+
+
 win.mainloop()                             # window continues until user interacts  
