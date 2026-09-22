@@ -1,6 +1,6 @@
-from tkinter import *                                    # for GUI
-from tkinter import ttk                          
-win = Tk()                                             # window is created
+from tkinter import *             # for GUI
+from tkinter import ttk           # imported separately to access widgets inside ttk               
+win = Tk()                        # simple window is created
 win.title("Weather App")    
 win.config(bg = "lightblue")
 win.geometry("500x500")
@@ -16,12 +16,12 @@ list_name=[
     "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura",
     "Uttar Pradesh", "Uttarakhand", "West Bengal",
     "Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli and Daman and Diu",
-    "Lakshadweep", "Delhi", "Puducherry", "Ladakh"
-]   
+    "Lakshadweep", "Delhi", "Puducherry", "Ladakh" ]   
 
 com=ttk.Combobox(win,text="WEATHER APP",values=list_name,font=('Arial', 20, 'bold'))   # box where city names r entered
-com.place(x=50,y=100, height=50, width=400)
+com.place(x=50,y=100, height=50, width=400)          #ttk=Tkinter themed widgets
 
-done_button = Button()
+done_button = Button(win,text="Done",font=('Arial', 15,'bold'))
+done_button.place(x=220,y=180)
 
 win.mainloop()                             # window continues until user interacts  
