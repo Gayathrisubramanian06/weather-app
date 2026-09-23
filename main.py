@@ -4,7 +4,7 @@ from tkinter import ttk           # imported separately to access widgets inside
 import requests
 
 city_name="jodhpur"
-data = requests.get("https://api.openweathermap.org/data/2.5/weather?q+"{city_name}+"&appid=083952cab8b857889315816ce343ca71").json()
+data = requests.get("https://api.openweathermap.org/data/2.5/weather?q"+city_name+"&appid=083952cab8b857889315816ce343ca71").json()
 print(data)          #prints data which was in json format
 
 
