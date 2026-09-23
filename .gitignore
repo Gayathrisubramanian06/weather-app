@@ -1,0 +1,10 @@
+# Configuration & Secrets
+config.py
+.env
+
+# Python cache & compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python

@@ -3,11 +3,16 @@ from tkinter import ttk           # imported separately to access widgets inside
 
 import requests
 
+try:
+    from config import API_KEY
+except ImportError:
+    API_KEY = "YOUR_API_KEY_HERE"
+
 def data_get():
     city = city_name.get().strip()
     if not city:
         return
-    data = requests.get("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=083952cab8b857889315816ce343ca71").json()
+    data = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}").json()
     if data.get("cod") == 200:
         w_label1.config(text=data["weather"][0]["main"])
         wb_label1.config(text=data["weather"][0]["description"])                       # data is given in dictionary format
