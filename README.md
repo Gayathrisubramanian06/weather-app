@@ -36,7 +36,14 @@ pip install requests
    cd weather-app
    ```
 
-2. Run the application:
+2. Configure your API key:
+   - Copy `config.example.py` to `config.py`:
+     ```bash
+     cp config.example.py config.py
+     ```
+   - Open `config.py` and replace `"YOUR_API_KEY_HERE"` with your actual OpenWeatherMap API key.
+
+3. Run the application:
    ```bash
    python main.py
    ```
