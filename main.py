@@ -4,13 +4,13 @@ from tkinter import ttk           # imported separately to access widgets inside
 import requests
 
 city_name="jodhpur"
-data = requests.get("https://api.openweathermap.org/data/2.5/weather?q"+city_name+"&appid=083952cab8b857889315816ce343ca71").json()
+data = requests.get("https://api.openweathermap.org/data/2.5/weather?q="+city_name+"&appid=083952cab8b857889315816ce343ca71").json()
 print(data)          #prints data which was in json format
 
 
 
 
-'''
+
 win = Tk()                        # simple window is created
 win.title("Weather App")    
 win.config(bg = "lightblue")
@@ -29,7 +29,7 @@ list_name=[
     "Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli and Daman and Diu",
     "Lakshadweep", "Delhi", "Puducherry", "Ladakh" ]   
 
-com=ttk.Combobox(win,text="WEATHER APP",values=list_name,font=('Arial', 20, 'bold'))   # box where city names r entered
+com=ttk.Combobox(win,text="WEATHER APP",values=list_name,font=('Arial', 20, 'bold'),textvariable=city_name)  # box where city names r entered
 com.place(x=50,y=100, height=50, width=400)          #ttk=Tkinter themed widgets
 
 done_button = Button(win,text="Done",font=('Arial', 15,'bold'))
@@ -61,4 +61,4 @@ press_label1.place(x=170,y=410, height=15, width=150)
 
 
 win.mainloop()                             # window continues until user interacts  
-'''
+
