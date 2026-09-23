@@ -1,5 +1,16 @@
 from tkinter import *             # for GUI
-from tkinter import ttk           # imported separately to access widgets inside ttk               
+from tkinter import ttk           # imported separately to access widgets inside ttk   
+
+import requests
+
+city_name="jodhpur"
+data = requests.get("https://api.openweathermap.org/data/2.5/weather?q+"{city_name}+"&appid=083952cab8b857889315816ce343ca71").json()
+print(data)          #prints data which was in json format
+
+
+
+
+'''
 win = Tk()                        # simple window is created
 win.title("Weather App")    
 win.config(bg = "lightblue")
@@ -27,16 +38,27 @@ done_button.place(x=220,y=180)
 w_label = Label(win, text="Weather Climate",font=('Arial', 10, 'bold'))  
 w_label.place(x=10,y=320, height=15, width=150)
 
-w_label = Label(win, text="Weather Description",font=('Arial', 10, 'bold'))  
-w_label.place(x=10,y=350, height=15, width=150)
+w_label1 = Label(win, text="",font=('Arial', 10, 'bold'))  
+w_label1.place(x=170,y=320, height=15, width=150)                    # x=width of original label (for displaying actual value)
 
-w_label = Label(win, text="Temperature",font=('Arial', 10, 'bold'))  
-w_label.place(x=10,y=380, height=15, width=150)
+wb_label = Label(win, text="Weather Description",font=('Arial', 10, 'bold'))  
+wb_label.place(x=10,y=350, height=15, width=150)
 
+wb_label1 = Label(win, text="",font=('Arial', 10, 'bold'))  
+wb_label1.place(x=170,y=350, height=15, width=150)
 
-w_label = Label(win, text="Pressure",font=('Arial', 10, 'bold'))  
-w_label.place(x=10,y=410, height=15, width=150)
+temp_label = Label(win, text="Temperature",font=('Arial', 10, 'bold'))  
+temp_label.place(x=10,y=380, height=15, width=150)
 
+temp_label1 = Label(win, text="",font=('Arial', 10, 'bold'))  
+temp_label1.place(x=170,y=380, height=15, width=150)
+
+press_label = Label(win, text="Pressure",font=('Arial', 10, 'bold'))  
+press_label.place(x=10,y=410, height=15, width=150)
+
+press_label1 = Label(win, text="",font=('Arial', 10, 'bold'))  
+press_label1.place(x=170,y=410, height=15, width=150)
 
 
 win.mainloop()                             # window continues until user interacts  
+'''
