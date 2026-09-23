@@ -3,11 +3,21 @@ from tkinter import ttk           # imported separately to access widgets inside
 
 import requests
 
-city_name="jodhpur"
-data = requests.get("https://api.openweathermap.org/data/2.5/weather?q="+city_name+"&appid=083952cab8b857889315816ce343ca71").json()
-print(data)          #prints data which was in json format
-
-
+def data_get():
+    city = city_name.get().strip()
+    if not city:
+        return
+    data = requests.get("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=083952cab8b857889315816ce343ca71").json()
+    if data.get("cod") == 200:
+        w_label1.config(text=data["weather"][0]["main"])
+        wb_label1.config(text=data["weather"][0]["description"])                       # data is given in dictionary format
+        temp_label1.config(text=str(int(data["main"]["temp"] - 273.15)) + "°C")        # maps corresponding values in dict to defined variables
+        press_label1.config(text=str(data["main"]["pressure"]))
+    else:
+        w_label1.config(text="Error")
+        wb_label1.config(text=data.get("message", "Not found"))
+        temp_label1.config(text="")
+        press_label1.config(text="")
 
 
 
@@ -18,6 +28,8 @@ win.geometry("500x500")
 
 name_label = Label(win, text="Weather App",font=('Arial', 20, 'bold'))  
 name_label.place(x=160,y=20, height=50, width=200)
+
+city_name=StringVar()
 
 list_name=[
     "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
@@ -32,8 +44,6 @@ list_name=[
 com=ttk.Combobox(win,text="WEATHER APP",values=list_name,font=('Arial', 20, 'bold'),textvariable=city_name)  # box where city names r entered
 com.place(x=50,y=100, height=50, width=400)          #ttk=Tkinter themed widgets
 
-done_button = Button(win,text="Done",font=('Arial', 15,'bold'))
-done_button.place(x=220,y=180)
 
 w_label = Label(win, text="Weather Climate",font=('Arial', 10, 'bold'))  
 w_label.place(x=10,y=320, height=15, width=150)
@@ -58,6 +68,9 @@ press_label.place(x=10,y=410, height=15, width=150)
 
 press_label1 = Label(win, text="",font=('Arial', 10, 'bold'))  
 press_label1.place(x=170,y=410, height=15, width=150)
+
+done_button = Button(win,text="Done",font=('Arial', 15,'bold'),command=data_get) 
+done_button.place(x=220,y=180)
 
 
 win.mainloop()                             # window continues until user interacts  
